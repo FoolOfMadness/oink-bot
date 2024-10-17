@@ -47,7 +47,7 @@ const execute = async (interaction) => {
       fetchReply: true,
     });
 
-    //loop to spin the wheel, embed colours as a stand-in for a gif
+    //loop to spin the whe|el, random colours as a stand-in for a gif
     for (let i = 0; i < shuffledOptions.length; i++) {
       embed = new EmbedBuilder()
         .setColor('Random')
@@ -69,7 +69,7 @@ const execute = async (interaction) => {
       .setColor('Green')
       .setTitle('🎡 Wheel of Fortune 🎡')
       .setDescription(
-        `The wheel has stopped! The selected option is **${selectedOption}**.`
+        `The wheel has stopped!\nThe wheel lands on **${selectedOption}**.`
       )
       .addFields({ name: 'Options:', value: options.join(', ') })
       .setThumbnail(interaction.member.displayAvatarURL());

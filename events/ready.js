@@ -1,5 +1,6 @@
 const { Events } = require('discord.js');
 const twitchManager = require('../twitchManager');
+const { qotw } = require('../qotw');
 
 module.exports = {
   name: Events.ClientReady,
@@ -30,6 +31,9 @@ module.exports = {
       };
     });
     client.bannedWords = bannedWords;
+
+    //schedule qotw
+    qotw(client);
 
     console.log(`Ready! Logged in as ${client.user.tag}`);
   },

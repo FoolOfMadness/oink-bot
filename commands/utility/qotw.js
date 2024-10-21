@@ -33,10 +33,14 @@ const getRandomQuestion = () => {
 //run every Monday at 09:00 server time
 const qotw = (client) => {
   const job = new CronJob('0 9 * * 1', async () => {
-    const channel = client.channels.cache.get('qotw_ChannelID');
-    if (channel) {
-      const question = getRandomQuestion();
-      await channel.send(`**Question of the Week:** ${question}`);
+    try {
+      const channel = client.channels.cache.get('1297844494028247040');
+      if (channel) {
+        const question = getRandomQuestion();
+        await channel.send(`**Question of the Week:** ${question}`);
+      }
+    } catch (error) {
+      console.error(error);
     }
   });
 

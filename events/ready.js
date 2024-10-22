@@ -1,6 +1,6 @@
 const { Events } = require('discord.js');
 const twitchManager = require('../twitchManager');
-const { qotw } = require('../qotw');
+const { qotw } = require('./qotw');
 
 module.exports = {
   name: Events.ClientReady,

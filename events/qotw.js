@@ -7,7 +7,6 @@ const questions = [
   'If you could travel anywhere in the world, where would you go?',
   "What's a skill you'd like to learn and why?",
   "What's your favourite memory from childhood?",
-  'If you could have dinner with any historical figure, who would it be?',
   'If you could have any superpower, what would it be and why?',
   "What's the most interesting place you've ever visited?",
   'If you could meet any fictional character, who would it be and why?',
@@ -40,11 +39,12 @@ const getRandomQuestion = () => {
   return question;
 };
 
+//real 1297844494028247040 test 1283043121751658593 cron 0 9 * * 1 cron test */5 * * * * *
 //run every Monday at 09:00 server time
 const qotw = (client) => {
   const job = new CronJob('0 9 * * 1', async () => {
     try {
-      const channel = client.channels.cache.get('1297844494028247040');
+      const channel = client.channels.cache.get('1283043121751658593');
       if (channel) {
         const question = getRandomQuestion();
         await channel.send(`**Question of the Week:** ${question}`);

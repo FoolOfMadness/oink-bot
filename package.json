@@ -13,6 +13,7 @@
   "dependencies": {
     "canvas-gif": "^1.0.3",
     "countries-and-timezones": "^3.7.0",
+    "cron": "^3.1.7",
     "discord.js": "^14.16.1",
     "dotenv": "^16.4.5",
     "number-to-words": "^1.2.4",

@@ -44,7 +44,7 @@ const getRandomQuestion = () => {
 const qotw = (client) => {
   const job = new CronJob('0 9 * * 1', async () => {
     try {
-      const channel = client.channels.cache.get('1283043121751658593');
+      const channel = client.channels.cache.get('1297844494028247040');
       if (channel) {
         const question = getRandomQuestion();
         await channel.send(`**Question of the Week:** ${question}`);

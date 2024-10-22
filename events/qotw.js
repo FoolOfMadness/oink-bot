@@ -1,26 +1,25 @@
 //question of the week
 const { CronJob } = require('cron');
+const fs = require('fs');
+const path = require('path');
 
-//list of questions
-const questions = [
-  "What's your favourite book and why?",
-  'If you could travel anywhere in the world, where would you go?',
-  "What's a skill you'd like to learn and why?",
-  "What's your favourite memory from childhood?",
-  'If you could have any superpower, what would it be and why?',
-  "What's the most interesting place you've ever visited?",
-  'If you could meet any fictional character, who would it be and why?',
-  "What's your favorite hobby and how did you get into it?",
-  'If you could instantly become an expert in something, what would it be?',
-  "What's the best piece of advice you've ever received?",
-  'If you could live in any historical period, which one would you choose and why?',
-  "What's your favourite movie and what do you love about it?",
-  'If you could change one thing about the world, what would it be?',
-  "What's a goal you have for the next year?",
-];
+//file paths
+const questionsFilePath = path.join(__dirname, 'qotw.txt');
+const recentQuestionsFilePath = path.join(__dirname, 'qotw.json');
 
-//recently asked questions
+//read questions from questions.txt file
+const questions = fs
+  .readFileSync(questionsFilePath, 'utf-8')
+  .split('\n')
+  .filter(Boolean);
+
+//read recently asked questions from recentQuestions.json file
 let recentQuestions = [];
+if (fs.existsSync(recentQuestionsFilePath)) {
+  recentQuestions = JSON.parse(
+    fs.readFileSync(recentQuestionsFilePath, 'utf-8')
+  );
+}
 
 //get a random question that hasn't been asked recently
 const getRandomQuestion = () => {
@@ -35,6 +34,12 @@ const getRandomQuestion = () => {
   const randomIndex = Math.floor(Math.random() * availableQuestions.length);
   const question = availableQuestions[randomIndex];
   recentQuestions.push(question);
+
+  //save the updated recentQuestions to the file
+  fs.writeFileSync(
+    recentQuestionsFilePath,
+    JSON.stringify(recentQuestions, null, 2)
+  );
 
   return question;
 };
